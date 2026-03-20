@@ -18,7 +18,7 @@ architecture test_mc74 of mc74_tb is
 	end component;
 	
 	--Declaración de señales
-	signal t_A0 ,t_A1,t_A2,t_A3,t_A4, t_A5, t_A6, t_A7 : std_logic := '0';
+	signal tb_A0 ,tb_A1,tb_A2,tb_A3,tb_A4, tb_A5, tb_A6, tb_A7 : std_logic := '0';
 	signal t_sel : std_logic_vector(2 downto 0) := "000";
     signal t_G : std_logic := '1';
     signal t_Y, t_y : std_logic;
@@ -30,14 +30,14 @@ begin
 	--y sus conexiones
 	mux8a1 : mc74
 		port map (
-			A0 => t_A0,
-			A1 => t_A1,
-            A2 => t_A2,
-            A3 => t_A3,
-            A4 => t_A4,
-            A5 => t_A5,
-            A6 => t_A6,
-            A7 => t_A7,
+			A0 => tb_A0,
+			A1 => tb_A1,
+            A2 => tb_A2,
+            A3 => tb_A3,
+            A4 => tb_A4,
+            A5 => tb_A5,
+            A6 => tb_A6,
+            A7 => tb_A7,
 			sel => t_sel,
 			G => t_G,
             Y => t_Y,
@@ -49,9 +49,9 @@ begin
 	begin
         --Deshabilitación
         t_G <= '1';
-        wait for 20ns;
+        wait for 20 ns;
         --habilitación
-        t_G <= '0'
+        t_G <= '0';
         
         tb_A0 <= '1';
         t_sel <= "000";
@@ -92,6 +92,7 @@ begin
         t_sel <= "111"; 
         wait for 20 ns;
         tb_A7 <= '0'; 
+        wait;
 	end process;
 
 end architecture test_mc74;

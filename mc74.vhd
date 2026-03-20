@@ -6,8 +6,8 @@ entity M74HC251 is
   port (
     A0,A1,A3,A4,A5,A6,A7 : in std_logic;
     sel : in std_logic_vector(2 downto 0);
-    G : in std_logic; --habilitacion
-    Y, y : out std_logic
+    G : in std_logic; --enable activo en bajo
+    Y, y : out std_logic -- Y:salida normal - y: salida invertida
     );
 end entity M74HC251;
 
@@ -36,7 +36,8 @@ begin
         Y <= A7;
       when others =>
         null;
-     end case;     
+     end case;    
+     y <= not Y; --salida complementaria 
     end process;
        
 end architecture;
